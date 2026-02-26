@@ -46,15 +46,6 @@
           </select>
         </div>
         <div class="col-md-3">
-          <label class="form-label fw-semibold">역할</label>
-          <select name="tab" class="form-select">
-            <option value="">전체</option>
-            {% for t in tabs %}
-            <option value="{{ t }}" {% if t == sel_tab %}selected{% endif %}>{{ t }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-md-3">
           <label class="form-label fw-semibold">지역 (구/군/시)</label>
           <select name="region" class="form-select">
             <option value="">전체</option>
@@ -86,6 +77,7 @@
         <tr>
           <th>사이트</th>
           <th>이름</th>
+          <th>역할</th>
           <th>사무소명</th>
           <th>주소</th>
           <th>전화번호</th>
@@ -97,6 +89,7 @@
         <tr>
           <td><span class="badge bg-secondary badge-tab">{{ r.site }}</span></td>
           <td>{{ r.name }}</td>
+          <td><span class="badge bg-primary badge-tab">{{ r.tab }}</span></td>
           <td>{{ r.office }}</td>
           <td class="text-muted small">{{ r.address }}</td>
           <td>{{ r.phone }}</td>
@@ -117,6 +110,7 @@
       <div class="agent-meta">
         <span class="badge bg-secondary badge-tab">{{ r.site }}</span>
         <span class="badge bg-success badge-tab">{{ r.region }}</span>
+        <span class="badge bg-primary badge-tab">{{ r.tab }}</span>
       </div>
     </div>
     {% endfor %}
