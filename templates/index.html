@@ -10,6 +10,7 @@
     .filter-card { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
     .table-card { background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
     thead { background: #0d6efd; color: #fff; }
+    .table-card td, .table-card th { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .badge-tab { font-size: .75rem; }
     .no-data { text-align: center; padding: 3rem; color: #6c757d; }
     .result-count { font-size: .9rem; color: #6c757d; margin-bottom: .75rem; }
@@ -72,7 +73,16 @@
   {% if results %}
   {# Desktop table #}
   <div class="table-card d-none d-md-block">
-    <table class="table table-hover mb-0">
+    <table class="table table-hover mb-0" style="table-layout: fixed; width: 100%;">
+      <colgroup>
+        <col style="width: 8%">   {# 사이트 #}
+        <col style="width: 8%">   {# 이름 #}
+        <col style="width: 13%">  {# 역할 #}
+        <col style="width: 17%">  {# 사무소명 #}
+        <col style="width: 34%">  {# 주소 #}
+        <col style="width: 12%">  {# 전화번호 #}
+        <col style="width: 8%">   {# 지역 #}
+      </colgroup>
       <thead>
         <tr>
           <th>사이트</th>
