@@ -17,7 +17,7 @@ def parse_region(address: str) -> str:
     if not address:
         return "기타"
     # 구/군 우선 (가장 세부)
-    match = re.search(r"(\S+[구군])", address)
+    match = re.search(r"([가-힣]+[구군])", address)
     if match:
         return match.group(1)
     # 시: 특별시/광역시/도 다음에 오는 세부 시
