@@ -13,6 +13,13 @@
     .badge-tab { font-size: .75rem; }
     .no-data { text-align: center; padding: 3rem; color: #6c757d; }
     .result-count { font-size: .9rem; color: #6c757d; margin-bottom: .75rem; }
+    /* Mobile agent card */
+    .agent-card { background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.08); padding: 1rem; margin-bottom: .75rem; }
+    .agent-card .agent-name { font-weight: 600; font-size: 1rem; }
+    .agent-card .agent-office { font-size: .9rem; color: #333; margin: .15rem 0; }
+    .agent-card .agent-address { font-size: .8rem; color: #6c757d; margin: .15rem 0; }
+    .agent-card .agent-phone { font-size: .85rem; margin: .3rem 0; }
+    .agent-card .agent-meta { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .4rem; }
   </style>
 </head>
 <body>
@@ -72,7 +79,8 @@
   <p class="result-count">검색 결과: <strong>{{ total }}</strong>건</p>
 
   {% if results %}
-  <div class="table-card">
+  {# Desktop table #}
+  <div class="table-card d-none d-md-block">
     <table class="table table-hover mb-0">
       <thead>
         <tr>
@@ -88,15 +96,30 @@
         {% for r in results %}
         <tr>
           <td><span class="badge bg-secondary badge-tab">{{ r.site }}</span></td>
-          <td class="text-nowrap">{{ r.name }}</td>
+          <td>{{ r.name }}</td>
           <td>{{ r.office }}</td>
           <td class="text-muted small">{{ r.address }}</td>
-          <td class="text-nowrap">{{ r.phone }}</td>
+          <td>{{ r.phone }}</td>
           <td><span class="badge bg-success badge-tab">{{ r.region }}</span></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+  </div>
+  {# Mobile cards #}
+  <div class="d-md-none">
+    {% for r in results %}
+    <div class="agent-card">
+      <div class="agent-name">{{ r.name }}</div>
+      <div class="agent-office">{{ r.office }}</div>
+      <div class="agent-address">{{ r.address }}</div>
+      <div class="agent-phone">📞 {{ r.phone }}</div>
+      <div class="agent-meta">
+        <span class="badge bg-secondary badge-tab">{{ r.site }}</span>
+        <span class="badge bg-success badge-tab">{{ r.region }}</span>
+      </div>
+    </div>
+    {% endfor %}
   </div>
   {% else %}
   <div class="no-data">
