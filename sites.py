@@ -5,6 +5,7 @@ SITES = [
     {"name": "경기북부", "url": "https://gyeonggi-n.kar.or.kr/"},
     {"name": "경기남부", "url": "https://gyeonggi.kar.or.kr/"},
     {"name": "강원",     "url": "https://gangwon.kar.or.kr/"},
+    {"name": "충남",     "url": "https://chungnam.kar.or.kr/"},
 ]
 
 TABS = [
